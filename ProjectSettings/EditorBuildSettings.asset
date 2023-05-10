@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/HoloIoT.unity
+    guid: 0d3893df9b43e7f4a87583d8098cda51
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: a1408c68a5bd84a48b5dd3d7eb3b5258, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8d3f02bf732bff04384109e3ed5e8a2c, type: 2}

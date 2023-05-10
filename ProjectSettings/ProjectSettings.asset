@@ -646,7 +646,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 0
+  selectedPlatform: 2
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
@@ -655,7 +655,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: HoloIoT5
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
@@ -663,7 +663,7 @@ PlayerSettings:
   metroCertificateNotAfter: 80e910608ea1da01
   metroApplicationDescription: HoloIoT5
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: HoloIoT5
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
