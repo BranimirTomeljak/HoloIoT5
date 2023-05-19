@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="touch-screen-6091015" size="0.159800 0.106533" />
+    <ImageTarget name="bulb" size="0.159600 0.099965" />
     <ImageTarget name="marker_15cm" size="0.150000 0.150000" />
-    <ImageTarget name="marker_10cm" size="0.100000 0.100000" />
   </Tracking>
 </QCARConfig>

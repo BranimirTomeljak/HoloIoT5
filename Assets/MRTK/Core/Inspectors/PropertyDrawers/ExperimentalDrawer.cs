@@ -16,7 +16,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
         /// Unity calls this function to draw the GUI.
         /// </summary>
         /// <param name="position">Rectangle to display the GUI in</param>
-        public override void OnGUI(Rect position)
+        /*public override void OnGUI(Rect position)
         {
             if (attribute is ExperimentalAttribute experimental)
             {
@@ -25,7 +25,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
                 EditorGUI.HelpBox(position, experimental.Text, MessageType.Warning);
                 EditorStyles.helpBox.richText = defaultValue;
             }
-        }
+        }*/
 
         /// <summary>
         /// Returns the height required to display UI elements drawn by OnGUI.
