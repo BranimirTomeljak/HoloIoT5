@@ -13,12 +13,29 @@ public class ColorPicker : MonoBehaviour
     private string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MWU3MDQ5MzIyYTM0YWY0YTMxM2U2NmZiNDY2MWE1ZiIsImlhdCI6MTY4NDUwMjExNiwiZXhwIjoxOTk5ODYyMTE2fQ.ioN1hFsnLVj2wye_JDaymqdJ2KPisBDZpBAXCwYt04U";
     public int identifier;
 
-    void Start()
+    public GameObject thisBackPlate;
+
+    public async void OnClick() // dodat da se backplate ne minja ako je ugaseno svitlo -> disableat backplate kad se ugasi svitlo
     {
-        //button.SetQuadIconByName("IconPin");
+        //if (SetInitialStates.isLightOn)
+        {
+            for (int i = 1; i <= 13; i++)
+            {
+                GameObject iBackPlate = GameObject.Find("BackPlate (" + i + ")");
+                if (iBackPlate != null)
+                {
+                    iBackPlate.SetActive(false);
+                    break;
+                }
+            }
+
+            thisBackPlate.SetActive(true);
+            await ChangeColor();
+        }
+
     }
 
-    public async Task ChangeColor()
+    public async Task ChangeColor() // mozda prominit u hue/saturation (hs_color)
     {
         string url = apiUrl + "/services/light/turn_on";
         string entryId = "light.hue_floor_shade_1";
@@ -38,10 +55,6 @@ public class ColorPicker : MonoBehaviour
             Debug.Log("Changed color: " + responseBody);
         }
     }
-    public async void OnClick()
-    {
-        await ChangeColor();
-    }
 
     public struct RGBValues
     {
@@ -58,18 +71,19 @@ public class ColorPicker : MonoBehaviour
         {
             switch (identifier)
             {
-                case 1: return new RGBValues(250, 229, 0);
-                case 2: return new RGBValues(259, 198, 11);
-                case 3: return new RGBValues(241, 142, 28);
-                case 4: return new RGBValues(234, 98, 31);
-                case 5: return new RGBValues(227, 35, 34);
-                case 6: return new RGBValues(196, 3, 125);
-                case 7: return new RGBValues(109, 57, 139);
-                case 8: return new RGBValues(68, 78, 159);
-                case 9: return new RGBValues(42, 113, 179);
-                case 10: return new RGBValues(6, 150, 187);
-                case 11: return new RGBValues(0, 142, 91);
-                case 12: return new RGBValues(140, 187, 38);
+                case 1: return new RGBValues(255, 0, 0);        // hue = 0, saturation = 100
+                case 2: return new RGBValues(255, 165, 0);      // hue = 30, saturation = 100
+                case 3: return new RGBValues(255, 255, 0);      // hue = 60, saturation = 100
+                case 4: return new RGBValues(0, 255, 0);        // hue = 120, saturation = 100
+                case 5: return new RGBValues(0, 128, 0);        // hue = 120, saturation = 50
+                case 6: return new RGBValues(0, 255, 255);      // hue = 180, saturation = 100
+                case 7: return new RGBValues(0, 0, 255);        // hue = 240, saturation = 100
+                case 8: return new RGBValues(135, 206, 250);    // hue = 210, saturation = 92
+                case 9: return new RGBValues(75, 0, 130);       // hue = 271, saturation = 100
+                case 10: return new RGBValues(128, 0, 128);     // hue = 300, saturation = 50
+                case 11: return new RGBValues(255, 0, 255);     // hue = 300, saturation = 100
+                case 12: return new RGBValues(255, 192, 203);   // hue = 350, saturation = 100
+                case 13: return new RGBValues(255, 255, 255);   // hue = 0, saturation = 0
                 default: return new RGBValues(0, 0, 0);
             }
         }
@@ -78,25 +92,30 @@ public class ColorPicker : MonoBehaviour
         {
             RGBValues[] rgbValues = new RGBValues[]
             {
-                new RGBValues(250, 229, 0),
-                new RGBValues(259, 198, 11),
-                new RGBValues(241, 142, 28),
-                new RGBValues(234, 98, 31),
-                new RGBValues(227, 35, 34),
-                new RGBValues(196, 3, 125),
-                new RGBValues(109, 57, 139),
-                new RGBValues(68, 78, 159),
-                new RGBValues(42, 113, 179),
-                new RGBValues(6, 150, 187),
-                new RGBValues(0, 142, 91),
-                new RGBValues(140, 187, 38)
+                new RGBValues(255, 0, 0),
+                new RGBValues(255, 165, 0),
+                new RGBValues(255, 255, 0),
+                new RGBValues(0, 255, 0),
+                new RGBValues(0, 128, 0),
+                new RGBValues(0, 255, 255),
+                new RGBValues(0, 0, 255),
+                new RGBValues(135, 206, 250),
+                new RGBValues(75, 0, 130),
+                new RGBValues(128, 0, 128),
+                new RGBValues(255, 0, 255),
+                new RGBValues(255, 192, 203),
+                new RGBValues(255, 255, 255)
             };
 
             for (int i = 0; i < rgbValues.Length; i++)
+            {
                 if (rgbValues[i].r == r && rgbValues[i].g == g && rgbValues[i].b == b)
-                    return i + 1; // Adding 1 to match the identifier (1-based indexing)
+                {
+                    return i + 1;
+                }
+            }
 
-            return 0; // Return 0 if no match is found
+            return 0;
         }
 
     }

@@ -12,16 +12,18 @@ public class SetInitialStates : MonoBehaviour
     private string apiUrl = "http://10.19.128.173:8123/api";
     private string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MWU3MDQ5MzIyYTM0YWY0YTMxM2U2NmZiNDY2MWE1ZiIsImlhdCI6MTY4NDUwMjExNiwiZXhwIjoxOTk5ODYyMTE2fQ.ioN1hFsnLVj2wye_JDaymqdJ2KPisBDZpBAXCwYt04U";
     private string responseBody;
-    public static bool isLightOn;
+    public static bool isLightOn = false;
     public Interactable toggleButton;
     public PinchSlider pinchSlider;
     async void Start()
     {
-        await getResponseBody();
+        pinchSlider.SliderValue = 0f;
+        //pinchSlider.enabled = false; -> vec sam disablea u unityju
+        await GetResponseBody();
         setInitialToggleState();
     }
 
-    public async Task getResponseBody()
+    public async Task GetResponseBody()
     {
         string entryId = "light.hue_floor_shade_1";
         string url = apiUrl + "/states/" + entryId;
@@ -47,34 +49,41 @@ public class SetInitialStates : MonoBehaviour
         if (isLightOn)
         {
             toggleButton.IsToggled = true;
+            pinchSlider.enabled = true;
             setInitialSliderValue();
-            setInitialColorValue();
+            setInitialBackPlate();
         }
         else
         {
-            pinchSlider.enabled = false;
+            //pinchSlider.SliderValue = 0f;
+            //pinchSlider.enabled = false;
         }
     }
 
     public void setInitialSliderValue()
     {
         Debug.Log(responseBody);
-        // Parse the JSON string into a RootObject using JsonUtility
+
         RootObject root = JsonUtility.FromJson<RootObject>(responseBody);
 
         pinchSlider.SliderValue = root.attributes.brightness / 255f;
     }
 
-    public void setInitialColorValue()
+    public void setInitialBackPlate()
     {
-        // enableat BackPlate (1) ako je odabrana ta boja -> sad to napravit kad se odabere boja u ColorPickeru
         RootObject root = JsonUtility.FromJson<RootObject>(responseBody);
-        Debug.Log("[" + root.attributes.rgb_color[0] + " " + root.attributes.rgb_color[1] + " " +root.attributes.rgb_color[2] + "]");
+        Debug.Log("[" + root.attributes.rgb_color[0] + " " + root.attributes.rgb_color[1] + " " + root.attributes.rgb_color[2] + "]");
         int identifier = ColorPicker.RGBValues.GetIdentifierForRGBValues(root.attributes.rgb_color[0], root.attributes.rgb_color[1], root.attributes.rgb_color[2]);
-        GameObject activeButton = GameObject.Find("BackPlate " + identifier);
-        activeButton.SetActive(true);
-        
-        // takoder, namistit da se ne moze minjat boja dok nije upaljena svica
+        if (identifier != 0)
+        {
+            GameObject parentObject = GameObject.Find("Color" + identifier);
+            for (int i = 0; i < parentObject.transform.childCount; i++)
+            {
+                Transform child = parentObject.transform.GetChild(i);
+                child.gameObject.SetActive(true);
+            }
+        }
+
     }
 
     [System.Serializable]
