@@ -20,19 +20,18 @@ public class UpdateBrightness : MonoBehaviour
 
     public async void OnSliderInteractionEnded(SliderEventData eventData)
     {
-        // Print the slider value
-        Debug.Log("Brightness percentage: " + pinchSlider.SliderValue);
+        Debug.Log("New brightness percentage: " + pinchSlider.SliderValue);
         await SendPostRequest((int)Math.Round(pinchSlider.SliderValue * 100));
     }
 
     public async Task SendPostRequest(int SliderPercentage)
     {
         string url = apiUrl + "/services/light/turn_on";
-        string entryId = "light.hue_floor_shade_1";
+        string entityId = "light.hue_floor_shade_1";
 
         using (var httpClient = new HttpClient())
         {
-            var json = "{\"entity_id\": \"" + entryId + "\", \"brightness_pct\": " + SliderPercentage + "}";
+            var json = "{\"entity_id\": \"" + entityId + "\", \"brightness_pct\": " + SliderPercentage + "}";
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             httpClient.BaseAddress = new Uri(url);

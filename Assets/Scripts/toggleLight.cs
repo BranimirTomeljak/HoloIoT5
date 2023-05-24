@@ -11,7 +11,7 @@ public class toggleLight : MonoBehaviour
 {
     private string apiUrl = "http://10.19.128.173:8123/api";
     private string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MWU3MDQ5MzIyYTM0YWY0YTMxM2U2NmZiNDY2MWE1ZiIsImlhdCI6MTY4NDUwMjExNiwiZXhwIjoxOTk5ODYyMTE2fQ.ioN1hFsnLVj2wye_JDaymqdJ2KPisBDZpBAXCwYt04U";
-    public RootObject root;
+    private RootObject root;
     public Interactable toggleButton;
     public PinchSlider pinchSlider;
 
@@ -27,23 +27,17 @@ public class toggleLight : MonoBehaviour
     public async Task SendPostRequest()
     {
         string url = apiUrl + "/services/light/toggle";
-        string entryId = "light.hue_floor_shade_1";
-
-        //string url2 = apiUrl + "/states/weather.forecast_mobility_lab";
+        string entityId = "light.hue_floor_shade_1";
 
         using (var httpClient = new HttpClient())
         {
-            var json = "{\"entity_id\": \"" + entryId + "\"}";
-            //var json = "{\"entity_id\": \"" + entryId + "\", \"rgb_color\": [" + r + "," + g + "," + b + "]}";
-            //rgb_color, color_temp_kelvin, brightness_pct -> https://www.home-assistant.io/integrations/light/
+            var json = "{\"entity_id\": \"" + entityId + "\"}";
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             httpClient.BaseAddress = new Uri(url);
-            //httpClient.BaseAddress = new Uri(url2);
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + authToken);
 
             HttpResponseMessage response = await httpClient.PostAsync(url, content);
-            //var response = await httpClient.GetAsync(url2);
             String responseBody = await response.Content.ReadAsStringAsync();
 
             Debug.Log("1:" + responseBody);
@@ -52,8 +46,8 @@ public class toggleLight : MonoBehaviour
 
     public async Task GetResponseBody()
     {
-        string entryId = "light.hue_floor_shade_1";
-        string url = apiUrl + "/states/" + entryId;
+        string entityId = "light.hue_floor_shade_1";
+        string url = apiUrl + "/states/" + entityId;
 
         using (var httpClient = new HttpClient())
         {
@@ -63,9 +57,9 @@ public class toggleLight : MonoBehaviour
             response.EnsureSuccessStatusCode();
 
             String responseBody = await response.Content.ReadAsStringAsync();
-            Debug.Log(responseBody);
-
             root = JsonUtility.FromJson<RootObject>(responseBody);
+
+            Debug.Log(responseBody);
 
             if (root.state == "on")
             {

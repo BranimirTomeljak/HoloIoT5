@@ -12,21 +12,22 @@ public class SetInitialStates : MonoBehaviour
     private string apiUrl = "http://10.19.128.173:8123/api";
     private string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MWU3MDQ5MzIyYTM0YWY0YTMxM2U2NmZiNDY2MWE1ZiIsImlhdCI6MTY4NDUwMjExNiwiZXhwIjoxOTk5ODYyMTE2fQ.ioN1hFsnLVj2wye_JDaymqdJ2KPisBDZpBAXCwYt04U";
     private string responseBody;
+    private RootObject root;
     public static bool isLightOn = false;
     public Interactable toggleButton;
     public PinchSlider pinchSlider;
     async void Start()
     {
-        pinchSlider.SliderValue = 0f;
-        //pinchSlider.enabled = false; -> vec sam disablea u unityju
         await GetResponseBody();
         setInitialToggleState();
+        setInitialSliderValue();
+        setInitialBackPlate();
     }
 
     public async Task GetResponseBody()
     {
-        string entryId = "light.hue_floor_shade_1";
-        string url = apiUrl + "/states/" + entryId;
+        string entityId = "light.hue_floor_shade_1";
+        string url = apiUrl + "/states/" + entityId;
 
         using (var httpClient = new HttpClient())
         {
@@ -36,53 +37,62 @@ public class SetInitialStates : MonoBehaviour
             response.EnsureSuccessStatusCode();
 
             responseBody = await response.Content.ReadAsStringAsync();
+            root = JsonUtility.FromJson<RootObject>(responseBody);
+
+            if(root.state == "on")
+            {
+                isLightOn = true;
+            }
+            else
+            {
+                isLightOn = false;
+            }
+
+            Debug.Log($"Initial: light is {(isLightOn ? "on" : "off")}");
             Debug.Log(responseBody);
         }
     }
 
     public void setInitialToggleState()
     {
-        isLightOn = responseBody.Contains("\"state\":\"on\"");
-
-        Debug.Log($"Initial: light is {(isLightOn ? "on" : "off")}");
-
         if (isLightOn)
         {
             toggleButton.IsToggled = true;
-            pinchSlider.enabled = true;
-            setInitialSliderValue();
-            setInitialBackPlate();
-        }
-        else
-        {
-            //pinchSlider.SliderValue = 0f;
-            //pinchSlider.enabled = false;
         }
     }
 
     public void setInitialSliderValue()
     {
-        Debug.Log(responseBody);
+        if (isLightOn)
+        {
+            pinchSlider.enabled = true;
+            pinchSlider.SliderValue = root.attributes.brightness / 255f;
+        }
+        else
+        {
+            pinchSlider.SliderValue = 0f;
+            pinchSlider.enabled = false;
+        }
 
-        RootObject root = JsonUtility.FromJson<RootObject>(responseBody);
-
-        pinchSlider.SliderValue = root.attributes.brightness / 255f;
     }
 
     public void setInitialBackPlate()
     {
-        RootObject root = JsonUtility.FromJson<RootObject>(responseBody);
-        Debug.Log("[" + root.attributes.rgb_color[0] + " " + root.attributes.rgb_color[1] + " " + root.attributes.rgb_color[2] + "]");
-        int identifier = ColorPicker.RGBValues.GetIdentifierForRGBValues(root.attributes.rgb_color[0], root.attributes.rgb_color[1], root.attributes.rgb_color[2]);
-        if (identifier != 0)
+        if (isLightOn)
         {
-            GameObject parentObject = GameObject.Find("Color" + identifier);
-            for (int i = 0; i < parentObject.transform.childCount; i++)
+            Debug.Log("[" + root.attributes.rgb_color[0] + " " + root.attributes.rgb_color[1] + " " + root.attributes.rgb_color[2] + "]");
+            int identifier = ColorPicker.RGBValues.GetIdentifierForRGBValues(root.attributes.rgb_color[0], root.attributes.rgb_color[1], root.attributes.rgb_color[2]);
+            if (identifier != 0)
             {
-                Transform child = parentObject.transform.GetChild(i);
-                child.gameObject.SetActive(true);
+                GameObject parentObject = GameObject.Find("Color" + identifier);
+                for (int i = 0; i < parentObject.transform.childCount; i++)
+                {
+                    Transform child = parentObject.transform.GetChild(i);
+                    child.gameObject.SetActive(true);
+                }
             }
         }
+
 
     }
 
@@ -97,6 +107,7 @@ public class SetInitialStates : MonoBehaviour
     public class RootObject
     {
         public Attributes attributes;
+        public string state;
     }
 
 }

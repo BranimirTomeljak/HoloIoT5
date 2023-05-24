@@ -17,7 +17,7 @@ public class ColorPicker : MonoBehaviour
 
     public async void OnClick() // dodat da se backplate ne minja ako je ugaseno svitlo -> disableat backplate kad se ugasi svitlo
     {
-        //if (SetInitialStates.isLightOn)
+        if (SetInitialStates.isLightOn)
         {
             for (int i = 1; i <= 13; i++)
             {
@@ -38,12 +38,12 @@ public class ColorPicker : MonoBehaviour
     public async Task ChangeColor() // mozda prominit u hue/saturation (hs_color)
     {
         string url = apiUrl + "/services/light/turn_on";
-        string entryId = "light.hue_floor_shade_1";
+        string entityId = "light.hue_floor_shade_1";
 
         using (var httpClient = new HttpClient())
         {
             RGBValues rgb = RGBValues.GetRGBValues(identifier); // iz nekog razloga uvik shifta za random rijednost r g b
-            var json = "{\"entity_id\": \"" + entryId + "\", \"rgb_color\": [" + rgb.r + "," + rgb.g + "," + rgb.b + "]}";
+            var json = "{\"entity_id\": \"" + entityId + "\", \"rgb_color\": [" + rgb.r + "," + rgb.g + "," + rgb.b + "]}";
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             httpClient.BaseAddress = new Uri(url);
@@ -92,24 +92,24 @@ public class ColorPicker : MonoBehaviour
         {
             RGBValues[] rgbValues = new RGBValues[]
             {
-                new RGBValues(255, 0, 0),
-                new RGBValues(255, 165, 0),
-                new RGBValues(255, 255, 0),
-                new RGBValues(0, 255, 0),
-                new RGBValues(0, 128, 0),
-                new RGBValues(0, 255, 255),
-                new RGBValues(0, 0, 255),
-                new RGBValues(135, 206, 250),
-                new RGBValues(75, 0, 130),
-                new RGBValues(128, 0, 128),
-                new RGBValues(255, 0, 255),
-                new RGBValues(255, 192, 203),
-                new RGBValues(255, 255, 255)
+        new RGBValues(255, 0, 0),
+        new RGBValues(255, 165, 0),
+        new RGBValues(255, 255, 0),
+        new RGBValues(0, 255, 0),
+        new RGBValues(0, 128, 0),
+        new RGBValues(0, 255, 255),
+        new RGBValues(0, 0, 255),
+        new RGBValues(135, 206, 250),
+        new RGBValues(75, 0, 130),
+        new RGBValues(128, 0, 128),
+        new RGBValues(255, 0, 255),
+        new RGBValues(255, 192, 203),
+        new RGBValues(255, 255, 255)
             };
 
             for (int i = 0; i < rgbValues.Length; i++)
             {
-                if (rgbValues[i].r == r && rgbValues[i].g == g && rgbValues[i].b == b)
+                if (IsWithinTolerance(rgbValues[i], r, g, b))
                 {
                     return i + 1;
                 }
@@ -117,6 +117,18 @@ public class ColorPicker : MonoBehaviour
 
             return 0;
         }
+
+        private static bool IsWithinTolerance(RGBValues rgb, int r, int g, int b)
+        {
+            int tolerance = 10;
+
+            bool isRWithinTolerance = Math.Abs(rgb.r - r) <= tolerance;
+            bool isGWithinTolerance = Math.Abs(rgb.g - g) <= tolerance;
+            bool isBWithinTolerance = Math.Abs(rgb.b - b) <= tolerance;
+
+            return isRWithinTolerance && isGWithinTolerance && isBWithinTolerance;
+        }
+
 
     }
 
