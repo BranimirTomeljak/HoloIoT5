@@ -41,15 +41,15 @@ public class ShowCurrentWeather : MonoBehaviour
     {
         if (weatherData != null)
         {
-            string displayText = $"<size=20><color=#000000><b>Weather Information - </b></color><b>{weatherData.attributes.friendly_name}</b>\n\n";
-            displayText += $"<size=18><color=#000000>State:</color> {weatherData.state}</size>\n";
-            displayText += $"<size=18><color=#000000>Last Changed:</color> {GetTimeAgoString(weatherData.last_changed)}</size>\n";
-            displayText += $"<size=18><color=#000000>Last Updated:</color> {GetTimeAgoString(weatherData.last_updated)}</size>\n";
-            displayText += $"<size=18><color=#000000>Temperature:</color> {weatherData.attributes.temperature}°C</size>\n";
-            displayText += $"<size=18><color=#000000>Humidity:</color> {weatherData.attributes.humidity}%</size>\n";
-            displayText += $"<size=18><color=#000000>Pressure:</color> {weatherData.attributes.pressure} hPa</size>\n";
-            displayText += $"<size=18><color=#000000>Wind Speed:</color> {weatherData.attributes.wind_speed} km/h</size>\n";
-            //displayText += $"<size=26><color=#0074D9>Forecast:</color> {GetForecastText()}</size>\n";
+            string displayText = $"<size=25><color=#000000><b>Weather Information\n</b></color></size>";   
+            displayText+= $"<size=22><b>{weatherData.attributes.friendly_name}</b></size>\n\n";
+            displayText += $"<color=#000000>State:</color> {PrintState(weatherData.state)}\n";
+            displayText += $"<color=#000000>Last Updated:</color> {GetTimeAgoString(weatherData.last_updated)}\n";
+            displayText += $"<color=#000000>Temperature:</color> {weatherData.attributes.temperature}°C\n";
+            displayText += $"<color=#000000>Humidity:</color> {weatherData.attributes.humidity}%\n";
+            displayText += $"<color=#000000>Pressure:</color> {weatherData.attributes.pressure} hPa\n";
+            displayText += $"<color=#000000>Wind Speed:</color> {weatherData.attributes.wind_speed} km/h\n";
+            //displayText += $"<size=26><color=#0074D9>Forecast:</color> {GetForecastText()}\n";
 
             weatherText.text = displayText;
         }
@@ -68,7 +68,7 @@ public class ShowCurrentWeather : MonoBehaviour
             for (int i = 0; i < weatherData.attributes.forecast.days.Length; i++)
             {
                 var day = weatherData.attributes.forecast.days[i];
-                forecastText += $"\n<size=24>{day.datetime}: {day.condition}, {day.temperature}°C</size>";
+                forecastText += $"\n{day.datetime}: {day.condition}, {day.temperature}°C";
             }
         }
 
@@ -104,6 +104,44 @@ public class ShowCurrentWeather : MonoBehaviour
             return "More than 30 days ago";
         }
     }
+
+    string PrintState(string state)
+    {
+        switch (state)
+        {
+            case "clear-night":
+                return "Clear Night";
+            case "cloudy":
+                return "Cloudy";
+            case "exceptional":
+                return "Exceptional";
+            case "fog":
+                return "Fog";
+            case "lightning":
+                return "Lightning";
+            case "lightning-rainy":
+                return "Lightning rainy";
+            case "partlycloudy":
+                return "Partly cloudy";
+            case "pouring":
+                return "Pouring";
+            case "rainy":
+                return "Rainy";
+            case "snowy":
+                return "Snowy";
+            case "snowyrainy":
+                return "Snowy rainy";
+            case "sunny":
+                return "Sunny";
+            case "windy":
+                return "Windy";
+            case "windy-variant":
+                return "Windy";
+            default:
+                return "Unknown";
+        }
+    }
+
 
     [System.Serializable]
     public class RootObject
