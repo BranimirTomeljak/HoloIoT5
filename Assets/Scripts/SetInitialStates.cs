@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System;
-using System.Text;
 using Microsoft.MixedReality.Toolkit.UI;
 
 public class SetInitialStates : MonoBehaviour

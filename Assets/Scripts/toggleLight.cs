@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -73,7 +71,7 @@ public class toggleLight : MonoBehaviour
         }
     }
 
-    public void SetToggleState() // zna se nekad pobrkat ako puno puta kliknen u malon vrmenskon razmaku
+    public void SetToggleState()
     {
         if (root.state == "on")
         {

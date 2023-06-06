@@ -1,7 +1,8 @@
 {
-    "dependencies": {
-    "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-10.15.3.tgz",
+  "dependencies": {
     "com.microsoft.mixedreality.openxr": "file:MixedReality/com.microsoft.mixedreality.openxr-1.7.2.tgz",
+    "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-10.15.3.tgz",
+    "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.0.0",
     "com.unity.feature.development": "1.0.1",
     "com.unity.textmeshpro": "3.0.6",

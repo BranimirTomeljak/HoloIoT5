@@ -14,8 +14,6 @@ public class ShowCurrentWeather : MonoBehaviour
     public async void Start()
     {
         await SendGetRequest();
-        //await Task.Delay(500);
-        //await GetResponseBody();
         UpdateWeatherDisplay();
     }
     public async Task SendGetRequest()
@@ -43,13 +41,12 @@ public class ShowCurrentWeather : MonoBehaviour
         {
             string displayText = $"<size=25><color=#000000><b>Weather Information\n</b></color></size>";   
             displayText+= $"<size=22><b>{weatherData.attributes.friendly_name}</b></size>\n\n";
-            displayText += $"<color=#000000>State:</color> {PrintState(weatherData.state)}\n";
-            displayText += $"<color=#000000>Last Updated:</color> {GetTimeAgoString(weatherData.last_updated)}\n";
+            displayText += $"<color=#000000>State:</color> {PrintState(weatherData.state)} <sprite name=\"{weatherData.state}\">\n";
             displayText += $"<color=#000000>Temperature:</color> {weatherData.attributes.temperature}°C\n";
             displayText += $"<color=#000000>Humidity:</color> {weatherData.attributes.humidity}%\n";
             displayText += $"<color=#000000>Pressure:</color> {weatherData.attributes.pressure} hPa\n";
-            displayText += $"<color=#000000>Wind Speed:</color> {weatherData.attributes.wind_speed} km/h\n";
-            //displayText += $"<size=26><color=#0074D9>Forecast:</color> {GetForecastText()}\n";
+            displayText += $"<color=#000000>Wind Speed:</color> {weatherData.attributes.wind_speed} km/h\n\n";
+            displayText += $"<size=10><color=#000000>Last Updated:</color> {GetTimeAgoString(weatherData.last_updated)}</size>\n";
 
             weatherText.text = displayText;
         }

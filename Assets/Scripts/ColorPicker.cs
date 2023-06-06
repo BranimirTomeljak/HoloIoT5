@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System;
 using System.Text;
-using Microsoft.MixedReality.Toolkit.UI;
 
 public class ColorPicker : MonoBehaviour
 {
@@ -15,7 +12,7 @@ public class ColorPicker : MonoBehaviour
 
     public GameObject thisBackPlate;
 
-    public async void OnClick() // dodat da se backplate ne minja ako je ugaseno svitlo -> disableat backplate kad se ugasi svitlo
+    public async void OnClick()
     {
         if (SetInitialStates.isLightOn)
         {
@@ -35,14 +32,14 @@ public class ColorPicker : MonoBehaviour
 
     }
 
-    public async Task ChangeColor() // mozda prominit u hue/saturation (hs_color)
+    public async Task ChangeColor()
     {
         string url = apiUrl + "/services/light/turn_on";
         string entityId = "light.hue_floor_shade_1";
 
         using (var httpClient = new HttpClient())
         {
-            RGBValues rgb = RGBValues.GetRGBValues(identifier); // iz nekog razloga uvik shifta za random rijednost r g b
+            RGBValues rgb = RGBValues.GetRGBValues(identifier);
             var json = "{\"entity_id\": \"" + entityId + "\", \"rgb_color\": [" + rgb.r + "," + rgb.g + "," + rgb.b + "]}";
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
