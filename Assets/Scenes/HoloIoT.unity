@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9acc7968244a8886f3af591305bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeProfile: {fileID: 11400000, guid: fa86aeb2025b4e24b8de687b46340554, type: 2}
+  activeProfile: {fileID: 11400000, guid: 25fc719f03746db4e89c22b09767d1f5, type: 2}
 --- !u!4 &40919616
 Transform:
   m_ObjectHideFlags: 0
@@ -21955,6 +21955,8 @@ GameObject:
   - component: {fileID: 3757199959350206761}
   - component: {fileID: 4767991530109195192}
   - component: {fileID: 5718150434134480675}
+  - component: {fileID: 5718150434134480677}
+  - component: {fileID: 5718150434134480676}
   m_Layer: 0
   m_Name: LightSwitch
   m_TagString: Untagged
@@ -24801,6 +24803,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleButton: {fileID: 5718150434134480674}
   pinchSlider: {fileID: 1139270327}
+--- !u!114 &5718150434134480676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889616661970975105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4e6fadc401b5e4eadb1530c8a83f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5718150434134480677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889616661970975105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e6657bab90ac149872e5361b42ea62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectAction:
+    id: 0
+    description: None
+    axisConstraint: 0
+  voiceSelect: []
+  dwellTimeInSec: 0.8
+  onLookAtStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5718150434134480676}
+        m_TargetAssemblyTypeName: ongaze, Assembly-CSharp
+        m_MethodName: printaj
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  whileLookingAtTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  onLookAway:
+    m_PersistentCalls:
+      m_Calls: []
+  onDwell:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onTapDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onTapUp:
+    m_PersistentCalls:
+      m_Calls: []
+  eyeCursorSnapToTargetCenter: 0
 --- !u!224 &5824716328075796062
 RectTransform:
   m_ObjectHideFlags: 0
