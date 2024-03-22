@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARInfo>
+<TargetSet version="27.0" toolVersion="10.22.5">
+<ModelTarget name="22ou2024" targetId="21d4bab988e44ba28e2bdcd0222280d3" version="14.0" toolVersion="10.22.5" bbox="-0.267194 -0.000266 -0.231223 0.278273 0.293365 0.249820" previewImage="21d4bab988e44ba28e2bdcd0222280d3_preview.jpg"/>
+
+</TargetSet>
+
+<Assembly name="22ou2024s_assembly" assemblyId="f1d8bd2152d8468ab76fd147850c544b">
+<Part name="22ou2024" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="GuideView_0000" translation="0.0108127 0.119705 0.977932" rotation="AD: 0.995678 0.190024 -0.595101 210.271" image="22ou2024_GuideView_0000.png" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARInfo>

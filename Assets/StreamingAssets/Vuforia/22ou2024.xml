@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="22ou2024" motionHint="adaptive" trackingMode="car" optimizeTrackingFor="default"/>
+
+</Tracking>
+
+<Assembly name="22ou2024s_assembly" assemblyId="f1d8bd2152d8468ab76fd147850c544b">
+<Part name="22ou2024" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="GuideView_0000" translation="0.0108127 0.119705 0.977932" rotation="AD: 0.995678 0.190024 -0.595101 210.271" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>
