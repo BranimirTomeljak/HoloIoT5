@@ -6,8 +6,8 @@ using System.Text;
 
 public class ColorPicker : MonoBehaviour
 {
-    private string apiUrl = "http://10.19.128.173:8123/api";
-    private string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MWU3MDQ5MzIyYTM0YWY0YTMxM2U2NmZiNDY2MWE1ZiIsImlhdCI6MTY4NDUwMjExNiwiZXhwIjoxOTk5ODYyMTE2fQ.ioN1hFsnLVj2wye_JDaymqdJ2KPisBDZpBAXCwYt04U";
+    private string apiUrl = "http://10.19.4.148:8123/api";
+    private string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4OTA4OTI5YzZhYTg0NjNhYmJhMGMxOWM4OGJhZmU0NSIsImlhdCI6MTcxMTQ2MDg5OSwiZXhwIjoyMDI2ODIwODk5fQ.FX1Q6EiTu6iHN8NkBwJqqk-2hTJZAiEz665BdcrRAME";
     public int identifier;
 
     public GameObject thisBackPlate;
@@ -35,7 +35,7 @@ public class ColorPicker : MonoBehaviour
     public async Task ChangeColor()
     {
         string url = apiUrl + "/services/light/turn_on";
-        string entityId = "light.hue_floor_shade_1";
+        string entityId = "light.hue_go_1";
 
         using (var httpClient = new HttpClient())
         {
