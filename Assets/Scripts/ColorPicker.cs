@@ -35,7 +35,7 @@ public class ColorPicker : MonoBehaviour
     public async Task ChangeColor()
     {
         string url = apiUrl + "/services/light/turn_on";
-        string entityId = "light.hue_go_1";
+        string entityId = "light.lightbulb";
 
         using (var httpClient = new HttpClient())
         {
