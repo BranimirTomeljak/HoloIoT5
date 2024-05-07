@@ -1991,7 +1991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &138994531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7409,7 +7409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ikea 1-rgb
+  m_text: hue 1-rgb
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7436,7 +7436,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.65
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9629,7 +9629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592601254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0831, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0274, z: 0.0302}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21618,7 +21618,8 @@ MonoBehaviour:
   voiceRequiresFocus: 1
   profiles:
   - Target: {fileID: 0}
-    Themes: []
+    Themes:
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -27371,7 +27372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1392070581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38369,7 +38370,8 @@ MonoBehaviour:
   voiceRequiresFocus: 1
   profiles:
   - Target: {fileID: 0}
-    Themes: []
+    Themes:
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -40013,6 +40015,145 @@ Transform:
   m_Father: {fileID: 1668972055}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1958412845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1958412849}
+  - component: {fileID: 1958412848}
+  - component: {fileID: 1958412847}
+  - component: {fileID: 1958412846}
+  m_Layer: 0
+  m_Name: ModelTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1958412846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958412845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1621554113, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1958412848}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: 22ou2024
+  mDatasetName: Vuforia/22ou2024.xml
+  mCastedBehaviour: {fileID: 1958412848}
+  mModelScale: {x: 0.545467, y: 0.293631, z: 0.48104298}
+  mModelTargetPreview: {fileID: 0}
+--- !u!114 &1958412847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958412845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatusFilter: 1
+  UsePoseSmoothing: 0
+  AnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 3.3333333
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 1
+      inSlope: 3.3333333
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  OnTargetFound:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1958412848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958412845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -75151077, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: 22ou2024
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/22ou2024.xml
+  mBaseSize: 0.545467
+  mAspectRatioXY: 0.5383112
+  mAspectRatioXZ: 0.88189197
+  mShowBoundingBox: 0
+  mOverrideSnappingPose: 0
+  mBBoxMin: {x: -0.267194, y: -0.000266, z: -0.231223}
+  mBBoxMax: {x: 0.278273, y: 0.293365, z: 0.24982}
+  mPreviewImage: {fileID: 0}
+  mLength: 0.545467
+  mWidth: 0.293631
+  mHeight: 0.48104298
+  m3DGuideViewModel: {fileID: 0}
+  m2DGuideViewImage: {fileID: 0}
+  mGuideViewDisplayMode: 0
+  m2DGuideViewMaterial: {fileID: 0}
+  m3DGuideViewMaterial: {fileID: 0}
+  mSelectedGuideView: GuideView_0000
+  mMotionHint: 1
+  mTrackingMode: 1
+  mTrackingOptimization: 0
+  mTrackingOptimizationNeedsUpgrade: 0
+  mHasRealisticTextures: 0
+  mPreview: {fileID: 1958412846}
+  mAutoValidationDataSetName: 
+--- !u!4 &1958412849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958412845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964850412
 GameObject:
   m_ObjectHideFlags: 0
@@ -40648,7 +40789,7 @@ GameObject:
   - component: {fileID: 2019909174}
   - component: {fileID: 2019909173}
   - component: {fileID: 2019909172}
-  - component: {fileID: 2019909171}
+  - component: {fileID: 2019909177}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -40656,18 +40797,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2019909171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019909170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ac7bc5453a3997469b7111aadd8c290, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2019909172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40692,12 +40821,13 @@ MonoBehaviour:
   voiceRequiresFocus: 1
   profiles:
   - Target: {fileID: 0}
-    Themes: []
+    Themes:
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2019909171}
-        m_TargetAssemblyTypeName: ikea1, Assembly-CSharp
+      - m_Target: {fileID: 2019909177}
+        m_TargetAssemblyTypeName: hue1rgb, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -40799,6 +40929,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2019909177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019909170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d217748a6f622c545976884156f89e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorPicker: {fileID: 689279438}
 --- !u!1 &2020458266
 GameObject:
   m_ObjectHideFlags: 0
@@ -41605,7 +41748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2068346739
 MonoBehaviour:
   m_ObjectHideFlags: 0

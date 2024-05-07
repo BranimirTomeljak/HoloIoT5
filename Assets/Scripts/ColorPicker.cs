@@ -14,7 +14,9 @@ public class ColorPicker : MonoBehaviour
 
     public async void OnClick()
     {
-        if (SetInitialStates.isLightOn)
+        Debug.Log("ColorPicker skripta OnClick()");
+        await ChangeColor();
+        /*if (SetInitialStates.isLightOn)
         {
             for (int i = 1; i <= 13; i++)
             {
@@ -28,14 +30,14 @@ public class ColorPicker : MonoBehaviour
 
             thisBackPlate.SetActive(true);
             await ChangeColor();
-        }
+        }*/
 
     }
 
     public async Task ChangeColor()
     {
         string url = apiUrl + "/services/light/turn_on";
-        string entityId = "light.lightbulb";
+        string entityId = "light.hue_go_1";
 
         using (var httpClient = new HttpClient())
         {

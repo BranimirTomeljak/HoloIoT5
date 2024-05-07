@@ -13,11 +13,6 @@ public class ikea1 : MonoBehaviour
     private string authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4OTA4OTI5YzZhYTg0NjNhYmJhMGMxOWM4OGJhZmU0NSIsImlhdCI6MTcxMTQ2MDg5OSwiZXhwIjoyMDI2ODIwODk5fQ.FX1Q6EiTu6iHN8NkBwJqqk-2hTJZAiEz665BdcrRAME";
     private RootObject root;
 
-    public void Start() {
-        GameObject gameObjectToHide = GameObject.Find("Color Picker(1)");
-        gameObjectToHide.SetActive(false);
-    }
-
     public async void OnClick()
     {
         //InstantiateObject(eventData.Pointer.Result.Details.Point, eventData.Pointer.Result.Details.Normal);
