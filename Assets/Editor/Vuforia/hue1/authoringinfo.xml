@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARInfo>
+<TargetSet version="27.0" toolVersion="10.22.5">
+<ModelTarget name="hue1" targetId="3f496b9814594c248a4c37f12d8a3b72" version="14.0" toolVersion="10.22.5" bbox="-0.042961 0.084878 -0.038285 0.026657 0.124489 0.033796" previewImage="3f496b9814594c248a4c37f12d8a3b72_preview.jpg"/>
+
+</TargetSet>
+
+<Assembly name="hue1s_assembly" assemblyId="b06c0ec7d9064251989fe53581d8f2e2">
+<Part name="hue1" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="GuideView_0000" translation="0.00630738 0.0962949 0.169794" rotation="AD: -0.933822 -0.395059 2.19359 172.038" image="hue1_GuideView_0000.png" trained="no">
+
+</EntryPoint>
+<EntryPoint name="GuideView_0001" translation="0.0138079 0.099568 0.119484" rotation="AD: 0.897089 0.441865 124.898 179.997" image="hue1_GuideView_0001.png" trained="no">
+
+</EntryPoint>
+<EntryPoint name="GuideView_0002" translation="0.00385104 0.10511 0.145706" rotation="AD: -0.999953 0.0123075 1.26904 180.688" image="hue1_GuideView_0002.png" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARInfo>

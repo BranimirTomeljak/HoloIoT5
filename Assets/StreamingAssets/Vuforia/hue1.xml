@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="hue1" motionHint="static" trackingMode="car" optimizeTrackingFor="low_feature_objects"/>
+
+</Tracking>
+
+<Assembly name="hue1s_assembly" assemblyId="b06c0ec7d9064251989fe53581d8f2e2">
+<Part name="hue1" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="GuideView_0000" translation="0.00630738 0.0962949 0.169794" rotation="AD: -0.933822 -0.395059 2.19359 172.038" trained="no">
+
+</EntryPoint>
+<EntryPoint name="GuideView_0001" translation="0.0138079 0.099568 0.119484" rotation="AD: 0.897089 0.441865 124.898 179.997" trained="no">
+
+</EntryPoint>
+<EntryPoint name="GuideView_0002" translation="0.00385104 0.10511 0.145706" rotation="AD: -0.999953 0.0123075 1.26904 180.688" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>
