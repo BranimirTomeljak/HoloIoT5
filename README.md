@@ -1,3 +1,9 @@
+**BSc thesis (FER Zagreb, 2023): controlling a smart space through augmented reality.**
+
+A HoloLens 2 application that lets users control selected IoT devices in a smart space in real time by interacting with virtual elements placed in the room. It integrates with FERIoT, the faculty's IoT platform. Built with Unity 2022.2 and the Mixed Reality Toolkit (MRTK) in C#. The thesis itself is written in Croatian; its summary follows.
+
+---
+
 Završni rad:
 Razvoj aplikacije za upravljanje pametnim prostorom uporabom tehnologije proširene stvarnosti
 
